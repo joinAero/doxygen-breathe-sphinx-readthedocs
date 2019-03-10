@@ -24,9 +24,9 @@ copyright = '2019, Eevee'
 author = 'Eevee'
 
 # The short X.Y version
-version = ''
+version = '1.0.0'
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = '{}-alpha'.format(version)
 
 
 # -- General configuration ---------------------------------------------------
