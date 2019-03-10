@@ -26,7 +26,7 @@ author = 'Eevee'
 # The short X.Y version
 version = '1.0.0'
 # The full version, including alpha/beta/rc tags
-release = '{}-alpha'.format(version)
+release = '{}'.format(version)
 
 
 # -- General configuration ---------------------------------------------------
