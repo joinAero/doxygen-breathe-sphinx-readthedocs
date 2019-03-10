@@ -29,3 +29,14 @@ stream_test: _output/stream_test
 
 .PHONY: test
 test: stream_test
+
+# doc
+
+.PHONY: doc
+doc:
+	@cd doc; make html
+
+.PHONY: cleandoc
+cleandoc:
+	-rm -r doc/_build
+	-rm -r doc/_doxygen

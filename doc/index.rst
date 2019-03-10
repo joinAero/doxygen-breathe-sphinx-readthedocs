@@ -7,14 +7,21 @@ Welcome to Breathe Sample's documentation!
 ==========================================
 
 .. toctree::
+   :caption: USAGE
    :maxdepth: 2
-   :caption: Contents:
 
+   usage/getting_started
 
+.. toctree::
+   :caption: API REFERENCE
+   :maxdepth: 2
 
-Indices and tables
-==================
+   api/stream
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+..
+  Indices and tables
+  ==================
+
+  * :ref:`genindex`
+  * :ref:`modindex`
+  * :ref:`search`

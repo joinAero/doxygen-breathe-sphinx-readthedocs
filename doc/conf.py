@@ -39,6 +39,7 @@ release = '1.0.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'breathe',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -71,31 +72,45 @@ pygments_style = None
 
 # -- Options for HTML output -------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'alabaster'
+# on_rtd is whether we are on readthedocs.org
+import os
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-# html_theme_options = {}
+import subprocess
+subprocess.call('doxygen', shell=True)
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+if not on_rtd:  # only import and set the theme if we're building docs locally
+    import sphinx_rtd_theme
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# The default sidebars (for documents that don't match any pattern) are
-# defined by theme itself.  Builtin themes are using these templates by
-# default: ``['localtoc.html', 'relations.html', 'sourcelink.html',
-# 'searchbox.html']``.
-#
-# html_sidebars = {}
+    # The theme to use for HTML and HTML Help pages.  See the documentation for
+    # a list of builtin themes.
+    #
+    # html_theme = 'alabaster'
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+    # Theme options are theme-specific and customize the look and feel of a theme
+    # further.  For a list of options available for each theme, see the
+    # documentation.
+    #
+    # html_theme_options = {}
+
+    # Add any paths that contain custom static files (such as style sheets) here,
+    # relative to this directory. They are copied after the builtin static files,
+    # so a file named "default.css" will overwrite the builtin "default.css".
+    # html_static_path = ['_static']
+
+    # Custom sidebar templates, must be a dictionary that maps document names
+    # to template names.
+    #
+    # The default sidebars (for documents that don't match any pattern) are
+    # defined by theme itself.  Builtin themes are using these templates by
+    # default: ``['localtoc.html', 'relations.html', 'sourcelink.html',
+    # 'searchbox.html']``.
+    #
+    # html_sidebars = {}
+
+# otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
 
 # -- Options for HTMLHelp output ---------------------------------------------
@@ -171,3 +186,8 @@ epub_title = project
 
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
+
+
+# -- Extension configuration -------------------------------------------------
+
+breathe_projects = { 'stream': '_doxygen/xml' }

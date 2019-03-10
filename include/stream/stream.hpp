@@ -6,7 +6,7 @@
 namespace stream {
 
 /**
- * Sum class to accumulate the values.
+ * Sum struct to accumulate the values.
  */
 template <typename T>
 struct Sum {
