@@ -59,7 +59,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -70,14 +70,15 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = None
 
 
-# -- Options for HTML output -------------------------------------------------
-
 # on_rtd is whether we are on readthedocs.org
 import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 import subprocess
 subprocess.call('doxygen', shell=True)
+
+
+# -- Options for HTML output -------------------------------------------------
 
 if not on_rtd:  # only import and set the theme if we're building docs locally
     import sphinx_rtd_theme
